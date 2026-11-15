@@ -20,7 +20,7 @@ Open daarna `http://127.0.0.1:4175/`. Bladeren kan met scrollen, de pijlen recht
 
 ## Let op
 
-- Alleen de website heeft een live link (GitHub Pages van `de-gouden-kurk-v2`). De app staat nog niet online; slide 5 zegt dat ook.
+- De website (GitHub Pages van `de-gouden-kurk-v2`) en de app (GitHub Pages van `the-taste-club`) hebben een live link op slide 3, 5 en 10.
 - Prijzen, voorraad, assortiment en openingstijden in de getoonde schermen zijn voorbeelden. Slide 9 vraagt de ondernemer ze te bevestigen.
 - De e-mailknop op de laatste slide gebruikt hetzelfde adres als de presentatie van La Caleta.
 - Nog niet gepubliceerd: de presentatie draait alleen lokaal. `.github/workflows/deploy.yml` staat klaar voor GitHub Pages.
