@@ -1,9 +1,9 @@
-// Legt de schermen vast die in de presentatie staan. Start eerst de site (npm start in site/, poort 4174) en de app (npm start in the-taste-club/, poort 4300).
+// Legt de schermen vast die in de presentatie staan. Start eerst de site (npm start in site/, poort 4174; de hoofdsite en /social/) en de app (npm start in the-taste-club/, poort 4300).
 // Gebruik: node tools/maak-beelden.mjs   Uitvoer: .shots/*.png (daarna omzetten naar webp, zie README).
 import { mkdirSync } from "node:fs";
 import { loadPlaywright } from "./browser.mjs";
 
-const SITE = process.env.SITE || "http://127.0.0.1:4174/v2/";
+const SITE = process.env.SITE || "http://127.0.0.1:4174/";
 const APP = process.env.APP || "http://localhost:4300/";
 mkdirSync(".shots", { recursive: true });
 const { chromium } = await loadPlaywright();
@@ -21,6 +21,23 @@ const out = (n) => `.shots/${n}.png`;
     await page.waitForTimeout(3200);
     await page.screenshot({ path: out(name) });
   }
+  await page.evaluate(() => window.scrollTo(0, document.querySelector("#app").getBoundingClientRect().top + scrollY - 76));
+  await page.waitForTimeout(3200);
+  await page.screenshot({ path: out("website-app") });
+}
+
+{ // De website op een telefoon en het socialportfolio
+  const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2 });
+  const page = await ctx.newPage();
+  await page.goto(SITE, { waitUntil: "networkidle" });
+  await page.click("[data-gate-yes]");
+  await page.waitForTimeout(4500);
+  await page.screenshot({ path: out("website-mobiel") });
+  const desk = await (await browser.newContext({ viewport: { width: 1440, height: 900 } })).newPage();
+  await desk.goto(new URL("social/", SITE).href, { waitUntil: "networkidle" });
+  await desk.evaluate(() => window.scrollTo(0, document.querySelector("#maand-2").getBoundingClientRect().top + scrollY - 40));
+  await desk.waitForTimeout(1500);
+  await desk.screenshot({ path: out("social-portfolio") });
 }
 
 const phone = async () => {
@@ -47,7 +64,10 @@ const go = async (page, route) => { await page.goto(`${APP}#/${route}`); await p
   await page.click('[data-g="voor"][data-v="partner"]'); await page.click('[data-g="gelegenheid"][data-v="jubileum"]');
   await page.waitForTimeout(800); await page.screenshot({ path: out("app-cadeau") });
   await go(page, "pick"); await page.screenshot({ path: out("app-pick") });
-  await go(page, "collectie"); await page.screenshot({ path: out("app-collectie") });
+  await go(page, "collectie");
+  if (await page.locator("[data-sample]").count()) { await page.click("[data-sample]"); await page.waitForTimeout(1500); }
+  await page.screenshot({ path: out("app-collectie") });
+  await go(page, "rondleiding"); await page.screenshot({ path: out("app-rondleiding") });
 }
 
 { // Het beheerprototype op een laptop

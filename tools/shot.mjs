@@ -1,33 +1,22 @@
-// Screenshots van de presentatie per slide. Gebruik: node tools/shot.mjs [map]
+// Screenshots van elke route, op desktop en mobiel. Gebruik: URL=http://127.0.0.1:4175/ node tools/shot.mjs [map]
 import { loadPlaywright } from './browser.mjs';
 import { mkdirSync } from 'node:fs';
 
-const url = process.env.URL || 'http://localhost:4174/';
+const url = process.env.URL || 'http://127.0.0.1:4175/';
 const map = process.argv[2] || '.shots';
-
+const routes = ['/', '/website', '/social', '/app', '/vervolg'];
 const { chromium } = await loadPlaywright();
 const browser = await chromium.launch();
 mkdirSync(map, { recursive: true });
 
-const sizes = [
-  { name: 'desktop', width: 1440, height: 900 },
-  { name: 'mobiel', width: 390, height: 844 },
-];
-
-for (const size of sizes) {
+for (const size of [{ name: 'desktop', width: 1440, height: 900 }, { name: 'mobiel', width: 390, height: 844 }]) {
   const page = await browser.newPage({ viewport: { width: size.width, height: size.height } });
-  await page.goto(url, { waitUntil: 'networkidle' });
-  await page.waitForTimeout(900);
-  const n = await page.evaluate(() => document.querySelectorAll('.slide').length);
-  for (let i = 0; i < n; i += 1) {
-    await page.evaluate((index) => {
-      document.querySelectorAll('.slide')[index].scrollIntoView({ block: 'start' });
-    }, i);
-    await page.waitForTimeout(1100);
-    await page.screenshot({ path: `${map}/${size.name}-${String(i + 1).padStart(2, '0')}.png` });
+  for (const r of routes) {
+    await page.goto(`${url}#${r}`, { waitUntil: 'networkidle' });
+    await page.waitForTimeout(400);
+    await page.screenshot({ path: `${map}/${size.name}-${r.slice(1) || 'overzicht'}.png`, fullPage: true });
   }
   await page.close();
 }
-
 await browser.close();
 console.log('opgeslagen in', map);

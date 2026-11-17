@@ -3,269 +3,249 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>De Gouden Kurk: een voorproefje van website, social media en app</title>
-    <meta name="description" content="Een voorproefje voor slijterij De Gouden Kurk in Rozenburg: de website, een maand social media en de app THE TASTE CLUB.">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+    <meta name="referrer" content="no-referrer">
+    <meta name="robots" content="noindex">
+    <title>De Gouden Kurk: een voorproefje</title>
+    <meta name="description" content="Een voorproefje voor slijterij De Gouden Kurk in Rozenburg: de website, twee maanden social media en de app The Taste Club.">
     <meta name="theme-color" content="#120d0c">
     <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+    <link rel="preload" href="assets/fonts/bodoni-moda-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="assets/tokens.css">
     <link rel="stylesheet" href="assets/pres.css">
-    <script>document.documentElement.classList.add('js');</script>
+    <script src="assets/pres.js" defer></script>
   </head>
-  <body class="pres" data-theme="dark">
-    <a class="skip" href="#top">Naar de presentatie</a>
-    <div class="progress" id="progress" role="presentation"></div>
+  <body>
+    <a class="skip" href="#inhoud">Naar de inhoud</a>
 
     <header class="bar">
-      <a class="mark" href="#s1"><img src="assets/icon.svg" alt="" width="30" height="30">De Gouden Kurk</a>
-      <p class="where"><span id="where">Voorproefje</span> <span class="count num"><b id="nr">1</b> / <span id="tot">10</span></span></p>
+      <a class="mark" href="#/"><img src="assets/icon.svg" alt="" width="30" height="30"><span>De Gouden Kurk</span></a>
+      <nav class="bar__nav" aria-label="Onderdelen">
+        <ul>
+          <li><a href="#/website">Website</a></li>
+          <li><a href="#/social">Social media</a></li>
+          <li><a href="#/app">App</a></li>
+          <li><a href="#/vervolg">Volgende stap</a></li>
+        </ul>
+      </nav>
+      <a class="bar__back" href="#/" data-back hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>Overzicht</a>
     </header>
 
-    <main id="top" tabindex="-1">
+    <main id="inhoud" tabindex="-1">
 
-      <!-- 1. Omslag -->
-      <section id="s1" class="slide s-dark cover" data-theme="dark" data-title="Voorproefje" aria-labelledby="h1">
-        <div class="rail split">
-          <div class="reveal">
-            <p class="label eyebrow">Voorstel van WebRnds · november 2026</p>
-            <p class="cover-mark" aria-hidden="true">De Gouden Kurk</p>
-            <h1 id="h1">Een <em>voorproefje</em></h1>
-            <p class="lede">Een website, een maand aan social media en een app om smaak te ontdekken. Alles in de stijl van De Gouden Kurk.</p>
-            <div class="actions">
-              <a class="btn btn-reserve" href="#s2">Begin met de proefkaart</a>
-            </div>
-          </div>
-          <figure class="arch-photo reveal" style="--d:120ms">
-            <img src="assets/screens/website-flessen.webp" alt="Drie flessen in het licht, met een gouden lijn erachter, uit de voorpagina van de website" width="560" height="700" fetchpriority="high">
-          </figure>
-        </div>
-        <div class="gold-rule" aria-hidden="true"></div>
-      </section>
-
-      <!-- 2. De proefkaart -->
-      <section id="s2" class="slide s-paper" data-theme="light" data-title="De proefkaart" aria-labelledby="h2">
+      <!-- Omslag: kies waar u begint -->
+      <section class="view view--home" data-route="/" data-title="Overzicht" aria-labelledby="t-home">
         <div class="rail">
-          <div class="menu-card reveal">
-            <p class="menu-script" aria-hidden="true">Proefkaart</p>
-            <h2 id="h2">Vier glazen <em>vandaag</em></h2>
-            <ol class="menu-list">
-              <li><a href="#s3"><span class="es"><b aria-hidden="true">I</b>Het eerste glas</span><span class="dots" aria-hidden="true"></span><span class="nl">De website</span></a></li>
-              <li><a href="#s4"><span class="es"><b aria-hidden="true">II</b>Het tweede glas</span><span class="dots" aria-hidden="true"></span><span class="nl">Social media</span></a></li>
-              <li><a href="#s5"><span class="es"><b aria-hidden="true">III</b>Het derde glas</span><span class="dots" aria-hidden="true"></span><span class="nl">De app</span></a></li>
-              <li><a href="#s9"><span class="es"><b aria-hidden="true">IV</b>Het laatste glas</span><span class="dots" aria-hidden="true"></span><span class="nl">Wat u nog kunt doen</span></a></li>
-            </ol>
+          <div class="home__head">
+            <p class="eyebrow">Voorstel van WebRnds · november 2026</p>
+            <h1 id="t-home" tabindex="-1">De Gouden Kurk, <em>een voorproefje</em></h1>
+            <p class="lede">Een website, twee maanden social media en een app om smaak te ontdekken. Kies waar u wilt beginnen; elk onderdeel opent ook los in de browser.</p>
           </div>
+          <ul class="tiles">
+            <li>
+              <a class="tile" href="#/website">
+                <span class="tile__img"><img src="assets/screens/website-home.webp" alt="" width="1200" height="750" fetchpriority="high"></span>
+                <span class="tile__no" aria-hidden="true">I</span>
+                <span class="tile__title">Website</span>
+                <span class="tile__text">De winkel online, in zwart en goud</span>
+              </a>
+            </li>
+            <li>
+              <a class="tile" href="#/social">
+                <span class="tile__img"><img src="assets/screens/social-m2-f13.webp" alt="" width="720" height="900"></span>
+                <span class="tile__no" aria-hidden="true">II</span>
+                <span class="tile__title">Social media</span>
+                <span class="tile__text">Twee maanden Instagram en Facebook</span>
+              </a>
+            </li>
+            <li>
+              <a class="tile" href="#/app">
+                <span class="tile__img tile__img--phone"><img src="assets/screens/app-home.webp" alt="" width="780" height="1688"></span>
+                <span class="tile__no" aria-hidden="true">III</span>
+                <span class="tile__title">App</span>
+                <span class="tile__text">The Taste Club: smaak, cadeau, collectie</span>
+              </a>
+            </li>
+            <li>
+              <a class="tile tile--next" href="#/vervolg">
+                <span class="tile__img tile__img--mark"><img src="assets/icon.svg" alt="" width="64" height="64"></span>
+                <span class="tile__no" aria-hidden="true">IV</span>
+                <span class="tile__title">Volgende stap</span>
+                <span class="tile__text">Wat we nog kunnen doen en wat we van u nodig hebben</span>
+              </a>
+            </li>
+          </ul>
+          <p class="fineprint">Alles is een concept: er wordt niets besteld of betaald, en flessen, prijzen en voorraad zijn voorbeelden.</p>
         </div>
       </section>
 
-      <!-- 3. Website -->
-      <section id="s3" class="slide s-light" data-theme="light" data-title="De website" aria-labelledby="h3">
-        <div class="rail split">
-          <div class="reveal">
-            <p class="course"><span class="script">Het eerste glas</span><span class="label">De website</span></p>
-            <h2 id="h3">Een goede fles <em>begint aan de toonbank</em></h2>
-            <p class="lede">De collectie met zoeken en filteren, advies op maat en de weg naar het Raadhuisplein. Rustige beweging laat het merk voelen.</p>
-            <ul class="ticks">
-              <li>Collectie met zoeken, filteren en sorteren</li>
-              <li>Advies: vertel wat u lekker vindt</li>
-              <li>Afhalen aan het Raadhuisplein of bezorgen in Rozenburg</li>
+      <!-- I. Website -->
+      <section class="view" data-route="/website" data-title="Website" aria-labelledby="t-web" hidden>
+        <div class="rail">
+          <div class="page__head">
+            <p class="course"><span class="course__no">I</span><span>De website</span></p>
+            <h2 id="t-web" tabindex="-1">Online net zo uitnodigend <em>als aan de toonbank</em></h2>
+            <a class="btn btn--gold btn--big" href="https://jalvdbroek-ship-it.github.io/de-gouden-kurk-v2/" target="_blank" rel="noopener noreferrer">Bekijk de website<span class="sr-only"> (opent in een nieuw tabblad)</span></a>
+          </div>
+          <div class="page__grid">
+            <ul class="features">
+              <li><strong>De collectie</strong> zoeken, filteren per soort en sorteren, met een venster per fles.</li>
+              <li><strong>Advies aan de toonbank</strong> en drie samenstellingen voor een cadeau, proeverij of borrel.</li>
+              <li><strong>Afhalen of bezorgen</strong> in Rozenburg, met een proefbestelling en leeftijdscontrole.</li>
+              <li><strong>Verantwoord</strong>: 18+-poort, NIX18, een privacypagina, geen cookies en geen tracking.</li>
+              <li><strong>Beweging in zwart en goud</strong>, op laptop en telefoon, en rustig bij "minder beweging".</li>
+              <li><strong>Een brug naar de app</strong> The Taste Club, onderaan de pagina.</li>
             </ul>
-            <div class="actions">
-              <a class="btn btn-dark" href="https://jalvdbroek-ship-it.github.io/de-gouden-kurk-v2/v2/" target="_blank" rel="noopener noreferrer">Open de website<span class="sr-only"> (nieuw tabblad)</span></a>
+            <div class="shots shots--web">
+              <figure class="browser"><span class="chrome" aria-hidden="true"><i></i><i></i><i></i></span><img src="assets/screens/website-home.webp" alt="De voorpagina met de kop Een goede fles begint aan de toonbank en drie flessen in het licht" width="1200" height="750" loading="lazy"></figure>
+              <figure class="browser browser--2"><span class="chrome" aria-hidden="true"><i></i><i></i><i></i></span><img src="assets/screens/website-collectie.webp" alt="De collectie met elf voorbeeldflessen, filters en een zoekveld" width="1200" height="750" loading="lazy"></figure>
+              <figure class="phone phone--float"><img src="assets/screens/website-mobiel.webp" alt="De voorpagina op een telefoon" width="780" height="1688" loading="lazy"></figure>
             </div>
           </div>
-          <div class="browsers reveal" style="--d:120ms">
-            <div class="browser main">
-              <div class="chrome" aria-hidden="true"><i></i><i></i><i></i></div>
-              <img src="assets/screens/website-home.webp" alt="De voorpagina van de website met de kop Een goede fles begint aan de toonbank" width="1200" height="758" loading="lazy">
-            </div>
-            <div class="browser second">
-              <div class="chrome" aria-hidden="true"><i></i><i></i><i></i></div>
-              <img src="assets/screens/website-collectie.webp" alt="De collectie met elf voorbeeldflessen, een zoekveld en filters per soort" width="1200" height="758" loading="lazy">
-            </div>
-          </div>
+          <aside class="why" aria-labelledby="w-web">
+            <h3 id="w-web">Waarom dit werkt voor De Gouden Kurk</h3>
+            <p>Het persoonlijke advies, waar de winkel om bekend staat, staat vooraan. De site gebruikt alleen wat vaststaat: het adres, het telefoonnummer en ruim 340 spiritualiën. Prijzen en openingstijden staan er pas op als u ze bevestigt.</p>
+          </aside>
+          <nav class="pager" aria-label="Onderdelen">
+            <a class="pager__link" href="#/">Terug naar het overzicht</a>
+            <a class="pager__link pager__link--next" href="#/social">Volgende: social media</a>
+          </nav>
         </div>
       </section>
 
-      <!-- 4. Social media -->
-      <section id="s4" class="slide s-dark on-dark" data-theme="dark" data-title="Social media" aria-labelledby="h4">
-        <div class="rail stack">
-          <div class="head reveal">
+      <!-- II. Social media -->
+      <section class="view" data-route="/social" data-title="Social media" aria-labelledby="t-soc" hidden>
+        <div class="rail">
+          <div class="page__head">
+            <p class="course"><span class="course__no">II</span><span>Social media</span></p>
+            <h2 id="t-soc" tabindex="-1">Twee maanden berichten <em>die Rozenburg leren kennen</em></h2>
+            <a class="btn btn--gold btn--big" href="https://jalvdbroek-ship-it.github.io/de-gouden-kurk-v2/social/" target="_blank" rel="noopener noreferrer">Bekijk het socialpakket<span class="sr-only"> (opent in een nieuw tabblad)</span></a>
+          </div>
+          <div class="page__grid">
+            <ul class="features">
+              <li><strong>24 posts, 6 carrousels, 24 stories en 12 Facebookposts</strong> van 16 november tot en met 14 januari.</li>
+              <li><strong>Per dag gepland</strong>, met caption, oproep en hashtags; de kalender opent ook in Excel.</li>
+              <li><strong>Maand 2 rond de feestdagen</strong>: winteradvies, cadeaus, aan tafel en een BOB-bericht bij oud en nieuw.</li>
+              <li><strong>Weetjes en advies</strong> in plaats van acties: whiskyregio's, port, rum, een etiket lezen.</li>
+              <li><strong>Volgens de regels</strong>: NIX18 in elk beeld en een automatische tekstcontrole op prijzen, merknamen en aanzetten tot drinken.</li>
+              <li><strong>Online portfolio</strong> met alle beelden en captions, om rustig door te bladeren.</li>
+            </ul>
+            <div class="shots shots--social">
+              <figure class="post"><img src="assets/screens/social-m2-f13.webp" alt="Post: Winterse smaken, rond en kruidig" width="720" height="900" loading="lazy"></figure>
+              <figure class="post"><img src="assets/screens/social-m2-c5.webp" alt="Carrousel: Aan tafel in vier stappen" width="720" height="900" loading="lazy"></figure>
+              <figure class="post"><img src="assets/screens/social-m2-f21.webp" alt="Post: Vijf regio's voor Scotch" width="720" height="900" loading="lazy"></figure>
+              <figure class="post"><img src="assets/screens/social-m2-s18.webp" alt="Story: Fijne feestdagen" width="540" height="960" loading="lazy"></figure>
+              <figure class="post"><img src="assets/screens/social-m2-s20.webp" alt="Story: Wie rijdt, drinkt niet" width="540" height="960" loading="lazy"></figure>
+              <figure class="post"><img src="assets/screens/social-m2-f15.webp" alt="Post: Aan tafel, ervoor, erbij en erna" width="720" height="900" loading="lazy"></figure>
+            </div>
+          </div>
+          <aside class="why" aria-labelledby="w-soc">
+            <h3 id="w-soc">Waarom dit werkt voor De Gouden Kurk</h3>
+            <p>Een slijterij mag niet roepen, wel vertellen. Korte weetjes en advies bouwen vertrouwen op en passen binnen de Reclamecode voor alcohol. Elke post eindigt bij de toonbank: loop binnen of bel.</p>
+          </aside>
+          <nav class="pager" aria-label="Onderdelen">
+            <a class="pager__link" href="#/website">Vorige: de website</a>
+            <a class="pager__link pager__link--next" href="#/app">Volgende: de app</a>
+          </nav>
+        </div>
+      </section>
+
+      <!-- III. App -->
+      <section class="view" data-route="/app" data-title="App" aria-labelledby="t-app" hidden>
+        <div class="rail">
+          <div class="page__head">
+            <p class="course"><span class="course__no">III</span><span>De app</span></p>
+            <h2 id="t-app" tabindex="-1">Smaak ontdekken, cadeau kiezen, <em>onthouden wat je proeft</em></h2>
+            <a class="btn btn--gold btn--big" href="https://jalvdbroek-ship-it.github.io/the-taste-club/" target="_blank" rel="noopener noreferrer">Bekijk de app<span class="sr-only"> (opent in een nieuw tabblad)</span></a>
+          </div>
+          <div class="page__grid">
+            <ul class="features">
+              <li><strong>Taste Finder</strong>: zes vragen, een smaakprofiel en flessen uit de winkel die erbij passen.</li>
+              <li><strong>Cadeauhulp</strong> met een eigen boodschap en een knop om de winkel te bellen.</li>
+              <li><strong>Mijn collectie</strong>: favorieten, proefnotities en flessen naast elkaar. Een voorbeeldcollectie laadt met één klik.</li>
+              <li><strong>The Golden Pick</strong> en verhalen; proeverijen verschijnen zodra u ze bevestigt.</li>
+              <li><strong>Op het beginscherm</strong> van iPhone en Android, en ook zonder internet te gebruiken.</li>
+              <li><strong>Beheer</strong>: flessen, Golden Pick, evenementen en verhalen zelf aanpassen.</li>
+            </ul>
+            <div class="shots shots--app">
+              <figure class="phone"><img src="assets/screens/app-home.webp" alt="Het welkomstscherm van The Taste Club" width="780" height="1688" loading="lazy"><figcaption>Welkom</figcaption></figure>
+              <figure class="phone phone--mid"><img src="assets/screens/app-smaak.webp" alt="Een smaakprofiel in een radargrafiek met passende flessen" width="780" height="1688" loading="lazy"><figcaption>Jouw smaak</figcaption></figure>
+              <figure class="phone"><img src="assets/screens/app-collectie.webp" alt="Mijn collectie met favorieten en het smaakprofiel" width="780" height="1688" loading="lazy"><figcaption>Je collectie</figcaption></figure>
+            </div>
+          </div>
+          <div class="try">
+            <div class="try__text">
+              <h3>Zelf proberen</h3>
+              <ol class="try__steps">
+                <li>Scan de code met uw telefoon, of open de app via de knop hierboven.</li>
+                <li>Bevestig dat u 18 of ouder bent. Nieuw? Volg de korte rondleiding op de startpagina.</li>
+                <li>Beheer: tik op <em>Meer</em>, dan <em>Beheer (demo)</em>, en vul pincode <strong class="pin">1234</strong> in.</li>
+              </ol>
+              <p class="small">Dit is een demo. Wat u in het beheer verandert, blijft alleen op uw eigen apparaat en gaat nergens heen. De pincode is geen echte beveiliging; echt beheer krijgt een eigen inlog.</p>
+            </div>
+            <figure class="qr"><img src="assets/qr-app.svg" alt="QR-code naar de app The Taste Club" width="180" height="180"><figcaption>jalvdbroek-ship-it.github.io/the-taste-club</figcaption></figure>
+          </div>
+          <aside class="why" aria-labelledby="w-app">
+            <h3 id="w-app">Waarom dit werkt voor De Gouden Kurk</h3>
+            <p>De app verkoopt niets: hij helpt klanten ontdekken wat ze lekker vinden en brengt ze met een vraag terug naar de toonbank. Geen account en geen gegevens bij ons, dus geen gedoe met privacy.</p>
+          </aside>
+          <nav class="pager" aria-label="Onderdelen">
+            <a class="pager__link" href="#/social">Vorige: social media</a>
+            <a class="pager__link pager__link--next" href="#/vervolg">Volgende: de volgende stap</a>
+          </nav>
+        </div>
+      </section>
+
+      <!-- IV. Volgende stap -->
+      <section class="view" data-route="/vervolg" data-title="Volgende stap" aria-labelledby="t-next" hidden>
+        <div class="rail">
+          <div class="page__head">
+            <p class="course"><span class="course__no">IV</span><span>De volgende stap</span></p>
+            <h2 id="t-next" tabindex="-1">Van voorproefje <em>naar de echte winkel</em></h2>
+          </div>
+          <div class="next">
+            <section class="next__col" aria-labelledby="n-offer">
+              <h3 id="n-offer">Wat wij nog meer kunnen doen</h3>
+              <ul class="list">
+                <li><strong>Live op een eigen domeinnaam</strong>, met een e-mailadres van de winkel.</li>
+                <li><strong>Een echte webshop</strong>: assortiment, prijzen en voorraad gekoppeld, online betalen en leeftijdscontrole bij aflevering.</li>
+                <li><strong>Fotografie</strong> van de winkel en de flessen, voor de site, de app en social.</li>
+                <li><strong>Korte video's en reels</strong>: de zes productieplannen liggen al klaar.</li>
+                <li><strong>Social media bijhouden</strong>: elke maand nieuwe berichten, plaatsen en reageren.</li>
+                <li><strong>Google Bedrijfsprofiel</strong> inrichten, met route, foto's en tijden.</li>
+                <li><strong>De app als echte versie</strong>: inlog voor het beheer, evenementen en nieuws vanaf één plek.</li>
+                <li><strong>Onderhoud en hosting</strong>, zodat alles veilig en actueel blijft.</li>
+              </ul>
+            </section>
+            <section class="next__col next__col--paper" aria-labelledby="n-need">
+              <h3 id="n-need">Wat we van u nodig hebben</h3>
+              <ol class="list list--num">
+                <li>Uw assortiment, prijzen en openingstijden, of wat daarvan op de site mag.</li>
+                <li>Eigen foto's, of toestemming voor de winkelfoto uit Rodi.</li>
+                <li>Bedrijfsgegevens (KvK) en wie verantwoordelijk is voor privacy.</li>
+                <li>Uw akkoord op de teksten en weetjes van het socialpakket.</li>
+                <li>Toegang tot Instagram en Facebook, met de leeftijdsgrens op 18+.</li>
+              </ol>
+            </section>
+          </div>
+          <div class="contact">
             <div>
-              <p class="course"><span class="script">Het tweede glas</span><span class="label">Social media</span></p>
-              <h2 id="h4">Een maand aan berichten, <em>klaar om te plaatsen</em></h2>
+              <h3>Vragen of meteen verder?</h3>
+              <p>Laat ons weten wat u ervan vindt, of welk onderdeel u als eerste wilt.</p>
             </div>
-            <div>
-              <p class="lede">12 posts, 4 carrousels, 12 stories, 6 Facebookposts en 6 reelconcepten in 30 dagen, met bijschriften. Rustig van toon, in dezelfde stijl als de website.</p>
-            </div>
+            <a class="btn btn--gold btn--big" href="mailto:schreuderdarren@gmail.com?subject=De%20Gouden%20Kurk%3A%20mijn%20reactie%20op%20het%20voorproefje">Mail WebRnds</a>
           </div>
-          <div class="posts reveal" style="--d:120ms">
-            <figure class="story"><img src="assets/screens/social-story-01.webp" alt="Story: Welkom bij De Gouden Kurk" width="540" height="960" loading="lazy"></figure>
-            <figure class="post"><img src="assets/screens/social-post-03.webp" alt="Instagram-post: drie jaar op eiken, het minimum voor Scotch" width="640" height="800" loading="lazy"></figure>
-            <figure class="post"><img src="assets/screens/social-post-05.webp" alt="Instagram-post: alles draait om de jeneverbes" width="640" height="800" loading="lazy"></figure>
-            <figure class="story"><img src="assets/screens/social-story-08.webp" alt="Story: Negroni in drie delen" width="540" height="960" loading="lazy"></figure>
-          </div>
+          <nav class="pager" aria-label="Onderdelen">
+            <a class="pager__link" href="#/app">Vorige: de app</a>
+            <a class="pager__link pager__link--next" href="#/">Terug naar het overzicht</a>
+          </nav>
         </div>
-      </section>
-
-      <!-- 5. De app -->
-      <section id="s5" class="slide s-light" data-theme="light" data-title="De app" aria-labelledby="h5">
-        <div class="rail split">
-          <div class="reveal">
-            <p class="course"><span class="script">Het derde glas</span><span class="label">De app</span></p>
-            <h2 id="h5">Smaak ontdekken, cadeau kiezen, <em>eigen collectie</em></h2>
-            <p class="lede">THE TASTE CLUB is een app voor op de telefoon. Geen webshop: wel een manier om te ontdekken wat er in het glas zit.</p>
-            <div class="actions">
-              <a class="btn btn-dark" href="https://jalvdbroek-ship-it.github.io/the-taste-club/" target="_blank" rel="noopener noreferrer">Open de app<span class="sr-only"> (nieuw tabblad)</span></a>
-            </div>
-            <p class="note-light"><span class="badge-example">Demo</span> Open de app op uw telefoon. Hij vraagt eerst of u 18 bent.</p>
-          </div>
-          <div class="phones reveal" style="--d:120ms">
-            <figure class="phone"><img src="assets/screens/app-home.webp" alt="Welkomstscherm van The Taste Club met de knoppen Ontdek jouw smaak en Zoek een cadeau" width="780" height="1688" loading="lazy"><figcaption>Welkom</figcaption></figure>
-            <figure class="phone mid"><img src="assets/screens/app-smaak.webp" alt="De Taste Finder met een smaakprofiel in een radargrafiek" width="780" height="1688" loading="lazy"><figcaption>Jouw smaakprofiel</figcaption></figure>
-            <figure class="phone"><img src="assets/screens/app-cadeau.webp" alt="De Gift Finder met ideeën voor een cadeau voor een partner" width="780" height="1688" loading="lazy"><figcaption>Een cadeau zoeken</figcaption></figure>
-          </div>
-        </div>
-      </section>
-
-      <!-- 6. The Taste Club -->
-      <section id="s6" class="slide s-wine on-wine" data-theme="dark" data-title="The Taste Club" aria-labelledby="h6">
-        <div class="rail split flip">
-          <div class="reveal">
-            <p class="course"><span class="script">The Taste Club</span><span class="label">Ontdekken, niet méér drinken</span></p>
-            <h2 id="h6">Een kleine club voor wie wil weten <em>wat er in het glas zit</em></h2>
-            <ul class="lines">
-              <li>Zes vragen leiden naar een smaakprofiel en vier passende flessen.</li>
-              <li>Favorieten bewaren, proefnotities maken en twee flessen naast elkaar vergelijken.</li>
-              <li>De Golden Pick: elke periode één fles met een verhaal.</li>
-              <li>Geen verkoop, geen korting, geen punten. Alleen 18+, met NIX18 en "Geniet, maar drink met mate".</li>
-            </ul>
-            <p class="note"><span class="badge-example">Voorbeeld</span> Flessen en smaakprofielen zijn concept tot De Gouden Kurk ze bevestigt.</p>
-          </div>
-          <figure class="arch-phone reveal" style="--d:120ms">
-            <img src="assets/screens/app-pick.webp" alt="De Golden Pick in de app, in de opmaak van een tijdschrift" width="780" height="1688" loading="lazy">
-          </figure>
-        </div>
-      </section>
-
-      <!-- 7. Beheer -->
-      <section id="s7" class="slide s-light" data-theme="light" data-title="Het beheer" aria-labelledby="h7">
-        <div class="rail split">
-          <div class="reveal">
-            <p class="course"><span class="script">Achter de schermen</span><span class="label">Het beheer</span></p>
-            <h2 id="h7">Flessen en verhalen <em>zelf aanpassen</em></h2>
-            <p class="lede">Een prototype dat laat zien hoe beheren eruit kan zien. Wijzigingen blijven in de browser; exporteren levert ze als bestand aan.</p>
-            <ul class="ticks">
-              <li>Producten toevoegen en bewerken, met foto en bronvermelding</li>
-              <li>De Golden Pick kiezen en evenementen en verhalen als concept of gepubliceerd</li>
-              <li>Echt beheer vraagt een inlog en een server; dat staat uitgewerkt in de documentatie</li>
-            </ul>
-          </div>
-          <div class="browser reveal" style="--d:120ms">
-            <div class="chrome" aria-hidden="true"><i></i><i></i><i></i></div>
-            <img src="assets/screens/app-beheer.webp" alt="Het beheerprototype met de lijst producten en knoppen om te bewerken" width="1200" height="750" loading="lazy">
-          </div>
-        </div>
-      </section>
-
-      <!-- 8. Samen -->
-      <section id="s8" class="slide s-dark on-dark" data-theme="dark" data-title="Samen" aria-labelledby="h8">
-        <div class="rail stack">
-          <div class="head single reveal">
-            <h2 id="h8">Eén klant, <em>drie ingangen</em></h2>
-            <p class="lede">Elk onderdeel laat de klant naar het volgende gaan.</p>
-          </div>
-          <ol class="steps reveal" style="--d:120ms">
-            <li>
-              <figure class="step-img"><img class="top" src="assets/screens/social-post-01.webp" alt="" width="640" height="800" loading="lazy"></figure>
-              <p class="step-no" aria-hidden="true">1</p>
-              <h3>Instagram</h3>
-              <p>Een bericht laat zien wie we zijn en waar we staan.</p>
-            </li>
-            <li>
-              <figure class="step-img"><img src="assets/screens/website-collectie.webp" alt="" width="1200" height="758" loading="lazy"></figure>
-              <p class="step-no" aria-hidden="true">2</p>
-              <h3>De website</h3>
-              <p>De collectie en de weg naar het Raadhuisplein.</p>
-            </li>
-            <li>
-              <figure class="step-img"><img class="top" src="assets/screens/app-home.webp" alt="" width="780" height="1688" loading="lazy"></figure>
-              <p class="step-no" aria-hidden="true">3</p>
-              <h3>De app</h3>
-              <p>Smaak ontdekken en onthouden wat u proeft.</p>
-            </li>
-          </ol>
-        </div>
-      </section>
-
-      <!-- 9. Wat u kunt doen -->
-      <section id="s9" class="slide s-light" data-theme="light" data-title="Wat u kunt doen" aria-labelledby="h9">
-        <div class="rail stack">
-          <div class="head single reveal">
-            <p class="course"><span class="script">Het laatste glas</span><span class="label">Wat u nog kunt doen</span></p>
-            <h2 id="h9">Drie dingen waar <em>u</em> ons bij helpt</h2>
-          </div>
-          <ol class="needs reveal" style="--d:120ms">
-            <li>
-              <p class="arch-no" aria-hidden="true">1</p>
-              <h3>Assortiment en openingstijden</h3>
-              <p>Nu staan er elf voorbeeldflessen, voorbeeldprijzen en geen openingstijden. Zodra u ze bevestigt, tonen we ze.</p>
-            </li>
-            <li>
-              <p class="arch-no" aria-hidden="true">2</p>
-              <h3>Eigen foto's</h3>
-              <p>De flesfoto's zijn kleine uitsneden met een open licentie, met bronvermelding. Foto's van uw flessen en winkel maken het af.</p>
-            </li>
-            <li>
-              <p class="arch-no" aria-hidden="true">3</p>
-              <h3>Privacy en leeftijd</h3>
-              <p>Wie de verantwoordelijke is voor de privacyverklaring, en een jurist die de leeftijdspoort en NIX18 beoordeelt.</p>
-            </li>
-          </ol>
-          <p class="promise reveal" style="--d:200ms">Het blijft een concept: er wordt niets besteld of betaald, en alle gegevens zijn voorbeelden.</p>
-        </div>
-      </section>
-
-      <!-- 10. Slot -->
-      <section id="s10" class="slide s-dark on-dark end" data-theme="dark" data-title="Zelf proeven" aria-labelledby="h10">
-        <div class="rail split">
-          <div class="reveal">
-            <p class="course"><span class="script">Het laatste woord</span><span class="label">Zelf proeven</span></p>
-            <h2 id="h10">Loop zelf <em>even rond</em></h2>
-            <p class="lede">De website en de app staan open in de browser. Er is niets echt: flessen, prijzen en voorraad zijn voorbeelden.</p>
-            <div class="actions">
-              <a class="btn btn-reserve" href="https://jalvdbroek-ship-it.github.io/de-gouden-kurk-v2/v2/" target="_blank" rel="noopener noreferrer">De website<span class="sr-only"> (nieuw tabblad)</span></a>
-              <a class="btn btn-line" href="https://jalvdbroek-ship-it.github.io/the-taste-club/" target="_blank" rel="noopener noreferrer">De app<span class="sr-only"> (nieuw tabblad)</span></a>
-            </div>
-          </div>
-          <div class="panel reveal" style="--d:120ms">
-            <h3>Wat u hier ziet</h3>
-            <dl>
-              <div><dt>Website</dt><dd>Zwart-goud concept met voorbeeldassortiment</dd></div>
-              <div><dt>Social media</dt><dd>30 dagen, klaar om te plaatsen</dd></div>
-              <div><dt>App</dt><dd>THE TASTE CLUB, demo zonder verkoop</dd></div>
-              <div><dt>Winkel</dt><dd>Raadhuisplein 6, Rozenburg<br>06 44999844</dd></div>
-            </dl>
-            <p class="small">Adres en telefoonnummer zijn van De Gouden Kurk. Al het andere is voorbeeld tot u het bevestigt.</p>
-            <a class="btn btn-line" href="mailto:schreuderdarren@gmail.com?subject=Mijn%20reactie%20op%20het%20voorproefje%20van%20De%20Gouden%20Kurk">Stuur uw reactie per e-mail</a>
-          </div>
-        </div>
-        <div class="gold-rule" aria-hidden="true"></div>
       </section>
     </main>
 
-    <footer class="end-note">
-      <p>Presentatie van WebRnds, november 2026. Alleen 18+. Geniet, maar drink met mate.</p>
+    <footer class="foot">
+      <p><span class="badge">18+</span> Geen alcohol onder de 18. Geniet, maar drink met mate.</p>
+      <p>Presentatie van WebRnds voor De Gouden Kurk, Raadhuisplein 6, Rozenburg.</p>
     </footer>
-
-    <nav class="pager" aria-label="Navigatie tussen de slides">
-      <button type="button" id="vorige" aria-label="Vorige slide">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
-      </button>
-      <button type="button" id="volgende" aria-label="Volgende slide">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
-      </button>
-    </nav>
-
-    <script src="assets/pres.js"></script>
   </body>
 </html>

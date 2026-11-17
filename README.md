@@ -1,26 +1,29 @@
 # Presentatie De Gouden Kurk
 
-Een korte presentatie (10 slides) die de website, het socialpakket en de app THE TASTE CLUB laat proeven. Opzet: een proefkaart met vier glazen, naar het voorbeeld van de presentatie voor La Caleta (`website-la-caleta/Presentatie-La-Caleta`).
+Een keuzemenu voor de ondernemer: een omslag met vier tegels (Website, Social media, App, Volgende stap) en per onderdeel één pagina met het doel, de functies, schermen, "waarom dit werkt voor De Gouden Kurk" en een grote knop naar het echte onderdeel. Live: https://jalvdbroek-ship-it.github.io/de-gouden-kurk-presentatie/
 
 ## Starten
 
 ```
-python3 -m http.server 4175
+python3 -m http.server 4175 --bind 127.0.0.1
 ```
 
-Open daarna `http://127.0.0.1:4175/`. Bladeren kan met scrollen, de pijlen rechtsonder of de pijltjestoetsen.
+Op Windows: `py -m http.server 4175 --bind 127.0.0.1`.
+
+Open daarna `http://127.0.0.1:4175/`. Routes: `#/`, `#/website`, `#/social`, `#/app`, `#/vervolg`. Toetsen: Escape terug naar het overzicht, pijltjes naar het vorige of volgende onderdeel.
 
 ## Mappen
 
-- `index.html`, `assets/pres.css`, `assets/pres.js`: de presentatie zelf, zonder build.
-- `assets/tokens.css`: kleuren en lettertypen, gelijk aan de website (`../site`).
-- `assets/screens`: schermafbeeldingen van de website, de app en het socialpakket (webp).
-- `tools/maak-beelden.mjs`: legt de schermen van de website (poort 4174, `/v2/`) en de app (poort 4300) opnieuw vast in `.shots/`. Zet ze daarna om naar webp in `assets/screens`.
-- `tools/check-a11y.mjs`, `fit.mjs`, `shot.mjs`: controles en schermafbeeldingen per slide. Gebruik `URL=http://127.0.0.1:4175/ node tools/<naam>.mjs`.
+- `index.html`, `assets/pres.css`, `assets/pres.js`: de presentatie, zonder build. Strikte CSP: geen inline scripts of stijlen.
+- `assets/tokens.css`: kleuren en lettertypen, gelijk aan de website.
+- `assets/screens`: schermafbeeldingen (webp) van de website, de app en het socialpakket (maand 2).
+- `assets/qr-app.svg`: QR-code naar de app, gemaakt met `tools/maak-qr.mjs` en een lokaal geïnstalleerde `qrcode` (MIT, versie 1.5.4). Geen dependency van dit project.
+- `tools/maak-beelden.mjs`: legt de schermen opnieuw vast in `.shots/` (site op poort 4174, app op poort 4300). Zet ze daarna om naar webp in `assets/screens`; niet elke opname wordt gebruikt.
+- `tools/check-a11y.mjs`, `fit.mjs`, `shot.mjs`: toegankelijkheid, overloop per route en schermafbeeldingen per route. Gebruik `URL=http://127.0.0.1:4175/ node tools/<naam>.mjs`.
 
 ## Let op
 
-- De website (GitHub Pages van `de-gouden-kurk-v2`) en de app (GitHub Pages van `the-taste-club`) hebben een live link op slide 3, 5 en 10.
-- Prijzen, voorraad, assortiment en openingstijden in de getoonde schermen zijn voorbeelden. Slide 9 vraagt de ondernemer ze te bevestigen.
-- De e-mailknop op de laatste slide gebruikt hetzelfde adres als de presentatie van La Caleta.
-- Nog niet gepubliceerd: de presentatie draait alleen lokaal. `.github/workflows/deploy.yml` staat klaar voor GitHub Pages.
+- De app-pagina noemt de demo-pincode van het beheer (1234). Die is geen beveiliging: wijzigingen blijven op het eigen apparaat.
+- "Wat wij nog meer kunnen doen" noemt bewust geen prijzen.
+- Contact loopt via e-mail (hetzelfde adres als bij La Caleta). Er staat geen telefoonnummer van WebRnds in, omdat dat nergens bevestigd is.
+- Prijzen, voorraad, assortiment en openingstijden in de getoonde schermen zijn voorbeelden.

@@ -1,74 +1,57 @@
-// Presentatiebediening: pijltjestoetsen, teller, voortgang en kleur van de balk.
-const slides = [...document.querySelectorAll('.slide')];
-const nr = document.getElementById('nr');
-const tot = document.getElementById('tot');
-const where = document.getElementById('where');
-const progress = document.getElementById('progress');
+// Keuzemenu met hash-routes: #/ (omslag), #/website, #/social, #/app, #/vervolg.
+// Eén scherm tegelijk; View Transitions als de browser die kent en beweging mag, anders direct wisselen.
+const views = [...document.querySelectorAll(".view")];
+const routes = views.map((v) => v.dataset.route);
+const back = document.querySelector("[data-back]");
+const navLinks = [...document.querySelectorAll(".bar__nav a")];
+const main = document.getElementById("inhoud");
+const calm = matchMedia("(prefers-reduced-motion: reduce)");
+let current = null;
 
-let current = 0;
-tot.textContent = String(slides.length);
+const routeOf = () => {
+  const r = location.hash.replace(/^#/, "") || "/";
+  return routes.includes(r) ? r : "/";
+};
 
-function setActive(index) {
-  current = index;
-  nr.textContent = String(index + 1);
-  where.textContent = slides[index].dataset.title;
-  document.body.dataset.theme = slides[index].dataset.theme;
-  progress.style.transform = `scaleX(${(index + 1) / slides.length})`;
+function paint(route, { focus }) {
+  for (const v of views) v.hidden = v.dataset.route !== route;
+  const view = views.find((v) => v.dataset.route === route);
+  document.title = route === "/" ? "De Gouden Kurk: een voorproefje" : `${view.dataset.title} · De Gouden Kurk`;
+  back.hidden = route === "/";
+  for (const a of navLinks) (a.getAttribute("href") === `#${route}` ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current"));
+  document.body.dataset.route = route.slice(1) || "home";
+  window.scrollTo(0, 0);
+  if (focus) (view.querySelector("h1, h2") ?? main).focus({ preventScroll: true });
 }
 
-function go(index) {
-  const next = Math.min(slides.length - 1, Math.max(0, index));
-  slides[next].scrollIntoView({ block: 'start' });
+function show({ focus = true } = {}) {
+  const route = routeOf();
+  if (route === current) return;
+  const first = current === null;
+  current = route;
+  if (!first && document.startViewTransition && !calm.matches) document.startViewTransition(() => paint(route, { focus }));
+  else paint(route, { focus: focus && !first });
 }
 
-const watcher = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) setActive(slides.indexOf(entry.target));
-    });
-  },
-  { rootMargin: '-45% 0px -45% 0px' }
-);
-slides.forEach((slide) => watcher.observe(slide));
+addEventListener("hashchange", () => show());
+show({ focus: false });
 
-const reveal = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add('in');
-      reveal.unobserve(entry.target);
-    });
-  },
-  { threshold: 0.12 }
-);
-document.querySelectorAll('.reveal').forEach((el) => reveal.observe(el));
-
-document.getElementById('vorige').addEventListener('click', () => go(current - 1));
-document.getElementById('volgende').addEventListener('click', () => go(current + 1));
-
-document.addEventListener('keydown', (event) => {
-  if (event.altKey || event.ctrlKey || event.metaKey) return;
-  const keys = {
-    ArrowRight: () => go(current + 1),
-    PageDown: () => go(current + 1),
-    ArrowLeft: () => go(current - 1),
-    PageUp: () => go(current - 1),
-    Home: () => go(0),
-    End: () => go(slides.length - 1),
-  };
-  if (!keys[event.key]) return;
+// Toetsen: Escape terug naar het overzicht, pijltjes langs de onderdelen (niet als er in een veld getypt wordt).
+document.addEventListener("keydown", (event) => {
+  if (event.altKey || event.ctrlKey || event.metaKey || event.target.closest?.("input, textarea, select")) return;
+  const i = routes.indexOf(current);
+  const to = { Escape: "/", ArrowRight: routes[Math.min(routes.length - 1, i + 1)], ArrowLeft: routes[Math.max(0, i - 1)] }[event.key];
+  if (!to || to === current) return;
   event.preventDefault();
-  keys[event.key]();
+  location.hash = to;
 });
 
 // Als een afbeelding ontbreekt, toon dan de illustratie.
-document.querySelectorAll('img').forEach((img) => {
-  img.addEventListener('error', () => {
+for (const img of document.querySelectorAll("img")) {
+  img.addEventListener("error", () => {
     if (img.dataset.fallback) return;
-    img.dataset.fallback = '1';
-    img.src = 'assets/img/placeholder.svg';
-    img.alt = 'Deze afbeelding is nog niet toegevoegd.';
+    img.dataset.fallback = "1";
+    img.src = "assets/img/placeholder.svg";
+    img.alt = "Deze afbeelding is nog niet toegevoegd.";
   });
-});
-
-setActive(0);
+}
