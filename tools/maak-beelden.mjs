@@ -16,7 +16,7 @@ const out = (n) => `.shots/${n}.png`;
   await page.click("[data-gate-yes]");
   await page.waitForTimeout(6500);
   await page.screenshot({ path: out("website-home") });
-  for (const [selector, offset, name] of [["[data-grid]", 150, "website-collectie"], ["#advies", 0, "website-advies"]]) {
+  for (const [selector, offset, name] of [["[data-grid]", 150, "website-collectie"], ["#feestdagen", 76, "website-recepten"], ["#advies", 0, "website-advies"]]) {
     await page.evaluate(([s, o]) => window.scrollTo(0, document.querySelector(s).getBoundingClientRect().top + scrollY - o), [selector, offset]);
     await page.waitForTimeout(3200);
     await page.screenshot({ path: out(name) });
@@ -68,6 +68,7 @@ const go = async (page, route) => { await page.goto(`${APP}#/${route}`); await p
   if (await page.locator("[data-sample]").count()) { await page.click("[data-sample]"); await page.waitForTimeout(1500); }
   await page.screenshot({ path: out("app-collectie") });
   await go(page, "rondleiding"); await page.screenshot({ path: out("app-rondleiding") });
+  await go(page, "recepten"); await page.screenshot({ path: out("app-recepten") });
 }
 
 { // Het beheerprototype op een laptop

@@ -25,5 +25,6 @@ Open daarna `http://127.0.0.1:4175/`. Routes: `#/`, `#/website`, `#/social`, `#/
 
 - De app-pagina noemt de demo-pincode van het beheer (1234). Die is geen beveiliging: wijzigingen blijven op het eigen apparaat.
 - "Wat wij nog meer kunnen doen" noemt bewust geen prijzen.
+- De recepten voor de feestdagen staan bij de website (past zich aan het jaar aan), bij de app (keuzeknoppen) en bij "Wat wij nog meer kunnen doen". De schermen hiervoor komen uit `maak-beelden.mjs` (`website-recepten`, `app-recepten`), opgenomen op de datum van die dag (nu Sinterklaas).
 - Contact loopt via e-mail (hetzelfde adres als bij La Caleta). Er staat geen telefoonnummer van WebRnds in, omdat dat nergens bevestigd is.
 - Prijzen, voorraad, assortiment en openingstijden in de getoonde schermen zijn voorbeelden.
